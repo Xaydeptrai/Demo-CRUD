@@ -1,0 +1,50 @@
+@if(isEdit){
+  <a class="flex justify-center text-4xl font-semibold">Edit Product Detail</a>
+} @else {
+  <a class="flex justify-center text-4xl font-semibold">Create Product Form</a>
+}
+<div>
+  <div class="mx-auto max-w-screen-2xl w-1/2 py-10">
+    <form [formGroup]="productForm" (ngSubmit)="save()">
+      <div class="w-full flex flex-wrap">
+        <mat-form-field class="w-full">
+          <mat-label>Name</mat-label>
+          <input type="text" matInput placeholder="Product Name" formControlName="name">
+        </mat-form-field>
+      </div>
+      <div class="w-full flex flex-wrap">
+        <mat-form-field class="w-full">
+          <mat-label>Description</mat-label>
+          <input type="text" matInput placeholder="Product Description" formControlName="description">
+        </mat-form-field>
+      </div>
+      <div class="w-full flex flex-wrap">
+        <mat-form-field class="w-full">
+          <mat-label>Price</mat-label>
+          <input type="number" matInput placeholder="10000" formControlName="price">
+        </mat-form-field>
+      </div>
+      <div class="w-full flex flex-wrap">
+        <mat-form-field class="w-full">
+          <mat-label>Quantity</mat-label>
+          <input type="number" matInput placeholder="7" formControlName="quantity">
+        </mat-form-field>
+      </div>
+      <div class="flex justify-end">
+        @if(isEdit){
+          <button mat-raised-button color="primary" [disabled]="!productForm.valid">
+        <span class="text-xl px-3">
+          Update
+        </span>
+          </button>
+        } @else {
+          <button mat-raised-button color="primary" [disabled]="!productForm.valid">
+        <span class="text-xl px-3">
+          Create
+        </span>
+          </button>
+        }
+      </div>
+    </form>
+  </div>
+</div>
